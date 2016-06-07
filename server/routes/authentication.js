@@ -1,4 +1,5 @@
 var express = require('express');
+var auth = require('../service/authentication');
 var router = express.Router();
 
 // middleware that is specific to this router
@@ -8,11 +9,10 @@ router.use(function timeLog(req, res, next) {
 });
 
 
-var index = function(req,res){
-	res.redirect("http://www.google.com");
-}
 
-router.get('/', index);
+var index = auth.authenticate('saml', { failureRedirect: '/', failureFlash: true });
+
+router.get('/',index);
 
 
 module.exports = {router:router,index:index};
