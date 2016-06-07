@@ -1,16 +1,30 @@
 var assert = require('chai').assert;
+var supertest = require('supertest');
 var authentication = require("../server/routes/authentication");
-var httpMocks = require('node-mocks-http');
+var app=require('../server/server');
+var supertest=supertest(app);
 suite('unathenticated', function() {
-	test('return login page', function() {
-		var request  = httpMocks.createRequest(
-		{	
-			method: 'GET',
-			url: '/'}
-			);
-		var response = httpMocks.createResponse();
-		authentication.index(request,response);
-		console.log(response._getRedirectUrl());
-		assert.equal(response._getRedirectUrl(),"home.html");
+	test('redirect to okta login page', function(done) {
+	
+	supertest
+  .get('/login')
+  .expect(302)
+  .end(function (err, res) {
+        
+		  assert.include(res.header.location,"okta");
+
+          done();
+        });
+
+	});
+	
+	test('go to home page', function(done) {
+	
+  supertest
+    .get("/")
+    .expect(200)
+    .end(done);
+  
+
 	});
 });
