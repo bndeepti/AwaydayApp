@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var path = require('path');
-var html = require('html');
 
 console.log("home");
 var index = function(req,res){

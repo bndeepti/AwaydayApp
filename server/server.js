@@ -19,8 +19,9 @@ app.use(session({ resave: true,
                   secret: 'uwotm8' }));
 app.use(auth.initialize());
 app.use(auth.session());
-app.set('view engine', 'jade');
+app.set('view engine', 'html');
 app.use(express.static(path.join(__dirname,'..', 'public')));
+app.use(express.static(path.join(__dirname,'..', 'views')));
 app.use("/",router);
 
 // catch 404 and forward to error handler
