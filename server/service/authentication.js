@@ -1,6 +1,6 @@
 var passport = require('passport'),
   SamlStrategy = require('passport-saml').Strategy,
-  config = require('../config/config.json');
+  config = require('../config/config');
 
 var users = [];
 
@@ -30,7 +30,7 @@ passport.deserializeUser(function(id, done) {
 });
 var samlstrategy = new SamlStrategy(
   {
-    issuer: "http://localhost:3000/",
+    issuer: config.auth.issuer,
     path: '/login/callback',
     entryPoint: config.auth.entryPoint,
     logoutUrl:config.auth.logoutUrl,
