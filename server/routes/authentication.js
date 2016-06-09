@@ -10,11 +10,10 @@ router.use(function timeLog(req, res, next) {
 });
 
 
-var index = auth.authenticate('saml', { failureRedirect: '/', failureFlash: true });
-var callback = auth.authenticate('saml', { failureRedirect: '/', failureFlash: true });
+var samlauthenticationcallback = auth.authenticate('saml', { failureRedirect: '/', failureFlash: true });
 
-router.get('/',index);
-router.post('/',callback, function (req, res) {
+router.get('/',samlauthenticationcallback);
+router.post('/',samlauthenticationcallback, function (req, res) {
     res.redirect("/private/home.html");
  });
 
