@@ -4,7 +4,7 @@ var adminhome=function(req,res){
 	if(req.session.passport.user!="bsneha@thoughtworks.com"){
 		throw new Error();
 	}
-	console.log(methods.getsignups());
+	console.log(service.getsignups());
 	res.sendFile(path.resolve("views/index.html"));
 }
 var methods={};

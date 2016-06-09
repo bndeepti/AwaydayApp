@@ -1,5 +1,5 @@
 var pg = require('pg');
-var conString = "postgres://username:password@localhost/database";
+var conString = "postgres://gnithin@localhost/testdb";
 
 //this initializes a connection pool
 //it will keep idle connections open for a (configurable) 30 seconds
