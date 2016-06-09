@@ -1,15 +1,16 @@
 var request = require('request');
+var jigsawconfig = require('../config/config')
 
 module.exports = {
     getUserByEmail: function (email, callback) {
         console.log("called function getuserbyemail");
         var loginName = email.split("@")[0];
       console.log(loginName);
-        var endPoint = "https://jigsaw.thoughtworks.com/api/people/" + loginName;
+        var endPoint = jigsawconfig.apiUrl +'/people/' + loginName;
         var options = {
             url: endPoint,
             headers: {
-                'Authorization' :'aad6531cccaec59656e643c64e8519e9'
+                'Authorization' :jigsawconfig.authtoken
                  },
             method :'GET'
             };

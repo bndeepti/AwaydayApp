@@ -1,3 +1,4 @@
+var jigsawconfig = require('../server/config/config')
 var expect = require('chai').expect;
 var sinon = require('sinon');
 var proxyquire = require('proxyquire');
@@ -11,11 +12,11 @@ describe('jigsaw read', function () {
     });
 
     it('should return user results', function (done) {
- 		var endPoint = "https://jigsaw.thoughtworks.com/api/people/bsneha";
+ 		var endPoint = jigsawconfig.apiUrl +'/people/test';
         var options = {
             url: endPoint,
             headers: {
-                'Authorization' :'aad6531cccaec59656e643c64e8519e9'
+                'Authorization' :jigsawconfig.authtoken
                  }
             };
         var body = JSON.stringify({
@@ -26,7 +27,7 @@ describe('jigsaw read', function () {
 	
         request.withArgs(options).yields(null, null,body);
 
-        jigsawResponse.getUserByEmail('bsneha@thoughtworks.com', function (err, data) {
+        jigsawResponse.getUserByEmail('test@thoughtworks.com', function (err, data) {
             expect(err).to.be.null;
             console.log(data);
             expect(data).to.equal(JSON.stringify({
