@@ -14,7 +14,7 @@ var samlauthenticationcallback = auth.authenticate('saml', { failureRedirect: '/
 
 router.get('/',samlauthenticationcallback);
 router.post('/',samlauthenticationcallback, function (req, res) {
-    res.redirect("/private/home.html");
+    res.redirect("/admin/");
  });
 
 module.exports = {router:router,index:auth.protected};
