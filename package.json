@@ -24,6 +24,7 @@
     "serve-favicon": "~2.3.0"
   },
   "dependencies": {
+    "async": "^2.0.0-rc.6",
     "chai": "^3.5.0",
     "mocha": "^2.5.3",
     "node-mocks-http": "^1.5.2",

@@ -9,6 +9,6 @@ config.auth=auth;
 var jigsaw={};
 jigsaw.apiUrl=process.env.JIGSAW_API_URL;
 jigsaw.authtoken=process.env.JIGSAW_API_AUTH_TOKEN;
-
+jigsaw.locations="Bangalore,Chennai,Gurgaon";//,Chennai,Hyderabad,Pune,Gurgaon"
 config.jigsaw=jigsaw;
 module.exports = config;
