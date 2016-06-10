@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>AwayDay Digital Experience | Admin Panel</title>
+    <link href="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css" rel="stylesheet">
+    <link href='http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css' rel='stylesheet' type='text/css'>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <ul class="menu">
+                <li class="menu-text">ThoughtWorks</li>
+            </ul>
+        </div>
+        <div class="top-bar-right">
+            <ul class="menu">
+            </ul>
+        </div>
+    </div>
+    <div ng-app="AdminHomeApp" ng-controller="AdminHomeController">
+	    <div class="row">
+	    	<div class="columns medium-4">
+	    		<h3>Current Statistics</h3>
+	    		Total Sign Ups : <span class="strong">{{ signups }}</span> <br />
+	    		Total Accommodation Preferences: 100 <br />
+	    		Total Travel Preferences: 100
+	    	</div>
+	    	<div class="columns medium-4">
+	    		<h3>Main Actions</h3>
+	    		<a href="#">Download Tentative Accommodation List</a><br />
+	    		<a href="#">Download Airplane List</a>
+	    	</div>
+	    	<div class="columns medium-4">
+	    		<h3>Quick Actions</h3>
+	    		<h4>Sign up</h4>
+	    		<form>
+	    			
+	    		</form>
+	    	</div>
+	    </div>
+	</div>
+
+	
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js">
+    </script> 
+    <script src="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js">
+    </script> 
+    <script>
+      $(document).foundation();
+    </script> 
+    <script type="text/javascript">
+	angular.module('AdminHomeApp', [])
+       .controller('AdminHomeController', function($scope,$http) {
+           $scope.signups = "Loading";
+           $http.get("/admin/signupcount").success(function(res){
+           		$scope.signups = res.count;
+           });
+
+    });	
+    </script>
+
+</body>
+</html>
